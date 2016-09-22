@@ -9,9 +9,14 @@ for (var i = 0; i < elements.length; i++) {
     if (node.nodeType === 3) {
       var text = node.nodeValue;
       var replacedText = text.replace(/\b(\w+( J)? )?Trump\b/gi, function repl(match) {
-        var names = ["donald trump", "donald j trump", "trump"]
-        if (names.indexOf(match.toLowerCase()) == -1) {
+        words = match.split(" ")
+        var family = ["melania", "ivanka", "ivana", "eric", "tiffany"]
+        if (family.indexOf(words[0].toLowerCase()) != -1) {
           return match
+        }
+        var names = ["donald", "trump"]
+        if (names.indexOf(words[0].toLowerCase()) == -1) {
+          return words[0] + " Ivanka's Dad"
         }
         return "Ivanka's Dad"
       })
